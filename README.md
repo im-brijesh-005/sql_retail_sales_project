@@ -1,6 +1,7 @@
 # 🛒 Retail Sales Analysis (PostgreSQL + Power BI)
 
-This project showcases a complete end-to-end retail analytics workflow using **PostgreSQL for data engineering** and **Power BI for business intelligence reporting**.  
+This project demonstrates a fully integrated retail analytics workflow where **PostgreSQL and Power BI are directly connected in live sync**.  
+Any modification in the PostgreSQL database—such as data cleaning, transformations, or recalculations—**automatically updates the Power BI dashboard**, eliminating manual refresh and ensuring accurate real-time reporting.
 
 The repository includes:
 
@@ -17,63 +18,63 @@ The goal of this project is to analyze real retail transaction data and uncover 
 - Customer purchasing patterns  
 - Category-wise performance  
 - Hourly and seasonal demand behavior  
-- Profitability and cost distribution  
+- Profitability and cost structure  
 - Age- and gender-based sales contribution  
 
-All data processing and feature engineering were performed directly in **PostgreSQL**, and results were visualized using an interactive **Power BI dashboard** synced with the database.
+All processing and feature engineering were performed directly in **PostgreSQL**, and results were visualized using an interactive **Power BI dashboard** synchronized live with the database.
 
 ---
 
 ## 🧠 Data Preparation & Feature Engineering (PostgreSQL)
 
 ### 🔹 Data Cleaning  
-- Removed records with missing or invalid fields  
-- Renamed incorrectly defined columns  
-- Converted formats (e.g., `age` → integer)
+- Removed incomplete or invalid records  
+- Corrected column naming issues  
+- Converted data types (e.g., `age` → integer)
 
-### 🔹 New Columns Created Through SQL
+### 🔹 New Features Created
 
 | Feature | Description |
 |--------|-------------|
 | `month`, `year`, `day` | Extracted from sale date |
 | `sale_hour` | Extracted from sale time |
-| `sale_shift` | Categorized as Morning, Afternoon, Evening, Night |
-| `season` | Segmented into Spring, Summer, Autumn, Winter |
+| `sale_shift` | Morning, Afternoon, Evening, Night |
+| `season` | Spring, Summer, Autumn, Winter |
 | `profit_per_unit` | `price_per_unit - cogs` |
 | `total_profit` | `profit_per_unit * quantity` |
 | `age_group` | Child, Teen, Young, Adult, Senior Citizen |
 
-### 🔹 Advanced SQL Concepts Used
+### 🔹 SQL Concepts Applied
 
-- Window Functions (`LAG`)  
-- Aggregate summarization  
+- Window functions (`LAG`)  
+- Grouped aggregations  
 - Nested subqueries  
 - Conditional logic (`CASE`)  
-- Group comparisons  
+- Trend and comparison analysis  
 
 ---
 
 ## 📊 Power BI Dashboard
 
-The dashboard connects **directly to PostgreSQL** and visualizes:
+### ⭐ Live Data Visualization
 
-### ⭐ Key Metrics
+The dashboard connects directly to PostgreSQL and displays:
 
 - Total Sales  
-- Total Quantity Sold  
+- Quantity Sold  
 - Average Sales  
 - Total Profit & COGS  
 - Profit per Unit  
 
-### 📈 Dashboard Visuals
+### 📈 Visual Insights
 
-- Category-wise sales share  
-- Gender-based profit and sales  
-- Hourly purchase trend  
-- Seasonal sales vs. profit  
-- Age group purchase comparison  
-- Monthly & yearly sales trend  
-- YoY performance using SQL window functions  
+- Category-wise sales contribution  
+- Gender-based breakdown  
+- Hourly purchase behavior  
+- Seasonal impact on sales and profits  
+- Age group purchase distribution  
+- Monthly & yearly performance trends  
+- YoY gap analysis through SQL window functions  
 
 ---
 
@@ -88,11 +89,11 @@ The dashboard connects **directly to PostgreSQL** and visualizes:
 
 ---
 
-## 📁 Files Included
+## 📁 Repository Structure
 
-- `/sql/` – All SQL scripts used  
-- `/dataset/` – Raw retail sales data  
-- `/dashboard/` – Power BI report  
+- `/sql/` – All PostgreSQL scripts used  
+- `/dataset/` – Original raw retail dataset  
+- `/dashboard/` – Power BI report connected live to PostgreSQL  
 
 ---
 
@@ -101,3 +102,4 @@ The dashboard connects **directly to PostgreSQL** and visualizes:
 **Brijesh**  
 Developed with SQL & Power BI for analytical insights.
 
+This project uses a direct live connection between PostgreSQL and Power BI, ensuring that any transformation or update in the database is immediately reflected in the dashboard without manual refresh, improving efficiency and real-time reporting accuracy.
