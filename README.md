@@ -1,108 +1,103 @@
-# sql_retail_sales_project
-🛒 Retail Sales Analysis (PostgreSQL + Power BI)
+# 🛒 Retail Sales Analysis (PostgreSQL + Power BI)
 
-This project demonstrates a complete end-to-end retail sales analysis pipeline using PostgreSQL for data processing and Power BI for interactive data visualization.
+This project showcases a complete end-to-end retail analytics workflow using **PostgreSQL for data engineering** and **Power BI for business intelligence reporting**.  
+
 The repository includes:
 
-✔ Original raw retail dataset
+- ✔ Raw retail dataset  
+- ✔ SQL scripts for cleaning, transformation, and analysis  
+- ✔ Power BI dashboard connected live to PostgreSQL  
 
-✔ PostgreSQL SQL scripts for cleaning, transformation & analysis
+---
 
-✔ Power BI dashboard connected directly to PostgreSQL
+## 📌 Project Overview
 
-📌 Project Overview
+The goal of this project is to analyze real retail transaction data and uncover insights related to:
 
-The goal of this project is to analyze transactional retail data to uncover business insights related to:
+- Customer purchasing patterns  
+- Category-wise performance  
+- Hourly and seasonal demand behavior  
+- Profitability and cost distribution  
+- Age- and gender-based sales contribution  
 
-Customer purchasing patterns
+All data processing and feature engineering were performed directly in **PostgreSQL**, and results were visualized using an interactive **Power BI dashboard** synced with the database.
 
-Category performance
+---
 
-Seasonal and hourly sales behavior
+## 🧠 Data Preparation & Feature Engineering (PostgreSQL)
 
-Profitability and cost structure
+### 🔹 Data Cleaning  
+- Removed records with missing or invalid fields  
+- Renamed incorrectly defined columns  
+- Converted formats (e.g., `age` → integer)
 
-Age-based and gender-based purchase trends
+### 🔹 New Columns Created Through SQL
 
-All processing, data cleaning, transformation, and feature engineering were done directly in PostgreSQL, and the results were visualized in Power BI by establishing a live connection with the database.
+| Feature | Description |
+|--------|-------------|
+| `month`, `year`, `day` | Extracted from sale date |
+| `sale_hour` | Extracted from sale time |
+| `sale_shift` | Categorized as Morning, Afternoon, Evening, Night |
+| `season` | Segmented into Spring, Summer, Autumn, Winter |
+| `profit_per_unit` | `price_per_unit - cogs` |
+| `total_profit` | `profit_per_unit * quantity` |
+| `age_group` | Child, Teen, Young, Adult, Senior Citizen |
 
-🧠 Data Preparation & Feature Engineering
+### 🔹 Advanced SQL Concepts Used
 
-Key operations performed in SQL:
+- Window Functions (`LAG`)  
+- Aggregate summarization  
+- Nested subqueries  
+- Conditional logic (`CASE`)  
+- Group comparisons  
 
-🔹 Data Cleaning
+---
 
-Removed records with missing or invalid fields
+## 📊 Power BI Dashboard
 
-Corrected column names
+The dashboard connects **directly to PostgreSQL** and visualizes:
 
-Converted column types (e.g., age → integer)
+### ⭐ Key Metrics
 
-🔹 New Derived Columns
+- Total Sales  
+- Total Quantity Sold  
+- Average Sales  
+- Total Profit & COGS  
+- Profit per Unit  
 
-Using SQL, the following fields were generated:
+### 📈 Dashboard Visuals
 
-month, year, day
+- Category-wise sales share  
+- Gender-based profit and sales  
+- Hourly purchase trend  
+- Seasonal sales vs. profit  
+- Age group purchase comparison  
+- Monthly & yearly sales trend  
+- YoY performance using SQL window functions  
 
-sale_hour
+---
 
-sale_shift
-(Morning, Afternoon, Evening, Night)
+## 🧰 Tech Stack
 
-season
-(Spring, Summer, Autumn, Winter)
+| Component      | Technology     |
+|----------------|----------------|
+| Database       | PostgreSQL     |
+| Query Language | SQL            |
+| Visualization  | Power BI       |
+| Data Source    | Raw CSV dataset |
 
-profit_per_unit, total_profit
+---
 
-age_group
-(Child, Teen, Young, Adult, Senior Citizen)
+## 📁 Files Included
 
-🔹 Advanced SQL Usage
+- `/sql/` – All SQL scripts used  
+- `/dataset/` – Raw retail sales data  
+- `/dashboard/` – Power BI report  
 
-Window functions (LAG)
+---
 
-Aggregate analytics (SUM, COUNT, AVG)
+## 📎 Author
 
-Subqueries and grouped comparisons
+**Brijesh**  
+Developed with SQL & Power BI for analytical insights.
 
-CASE expressions
-
-📊 Power BI Dashboard
-
-The Power BI dashboard reads live data directly from PostgreSQL and visualizes:
-
-⭐ Key KPIs
-
-Total Sales
-
-Quantity Sold
-
-Average Sales
-
-Profit & COGS
-
-Profit per Unit
-
-📈 Insights Shown in Charts
-
-Category-wise sales and share
-
-Gender-based contribution
-
-Hourly purchase volume
-
-Season-wise profit and sales
-
-Age group purchasing behavior
-
-Monthly and yearly sales comparison
-
-YoY (Year-over-Year) gaps using SQL window functions
-
-
-| Component      | Technology                     |
-| -------------- | ------------------------------ |
-| Database       | PostgreSQL                     |
-| Query Language | SQL                            |
-| Visualization  | Power BI                       |
-| Data Storage   | Raw CSV uploaded in repository |
